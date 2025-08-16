@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Master coding with Waqas, an expert tutor in Python, Java, C++, AI, Game Development, and Interview Preparation. Book a free 30-minute trial for personalized, project-based lessons." />
+  <meta name="keywords" content="coding tutor, Python tutor, Java tutor, C++ tutor, AI tutoring, game development tutor, interview preparation, online coding lessons" />
+  <meta name="author" content="Waqas" />
+  <title>Waqas — Expert Coding Tutor | Python, Java, AI, Game Development & Interview Prep</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.png" />
+  <style>
+    :root {
+      --primary: #0d47a1; /* Deeper blue for professionalism */
+      --primary-600: #0b3d8a;
+      --primary-800: #092f6e;
+      --secondary: #2196f3;
+      --accent: #1976d2; /* More corporate accent blue */
+      --accent-hover: #1565c0;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --text: #1a202c;
+      --muted: #4a5568;
+      --card: #ffffff;
+      --ring: rgba(13,71,161,0.2);
+      --shadow: 0 4px 12px rgba(0,0,0,0.05);
+      --shadow-hover: 0 8px 24px rgba(0,0,0,0.1);
+      --radius: 12px; /* Slightly reduced for cleaner look */
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+      animation-delay: calc(var(--delay) * 100ms);
+    }
+
+    /* ===== Navigation ===== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226,232,240,0.5);
+      box-shadow: var(--shadow);
+    }
+    .nav .wrap {
+      max-width: 1280px;
+      margin: auto;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .brand-sub {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: -4px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      position: relative;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary);
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .btn-cta {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(25,118,210,0.2);
+    }
+    .btn-cta:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(25,118,210,0.25);
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      padding: 100px 32px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1461749289074-182d9d7eecd9?auto=format&fit=crop&q=80') center/cover no-repeat;
+      opacity: 0.05;
+      z-index: -1;
+    }
+    .hero .wrap {
+      max-width: 1280px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+    }
+    .hero-copy h1 {
+      font-size: clamp(2.75rem, 4vw + 1rem, 3.75rem);
+      line-height: 1.15;
+      margin: 0 0 20px;
+      font-weight: 800;
+    }
+    .hero-copy p {
+      font-size: clamp(1.1rem, 0.5vw + 1rem, 1.25rem);
+      color: var(--muted);
+      margin: 0 0 32px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-ghost {
+      border: 2px solid #e2e8f0;
+      color: var(--primary);
+      background: #fff;
+    }
+    .btn-ghost:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    .hero-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      transition: var(--transition);
+    }
+    .hero-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .hero-card img {
+      width: 112px;
+      height: 112px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 4px solid #fff;
+      box-shadow: var(--shadow);
+    }
+    .hero-badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(33,150,243,0.1);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 100px 32px;
+    }
+    .container {
+      max-width: 1280px;
+      margin: auto;
+    }
+    h2.section-title {
+      font-size: 2.25rem;
+      text-align: center;
+      margin: 0 0 32px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      max-width: 800px;
+      margin: 0 auto 48px;
+      font-size: 1.15rem;
+    }
+
+    /* ===== Grid & Cards ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .card:hover::before {
+      opacity: 1;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* ===== Teaching Process ===== */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      text-align: center;
+    }
+    .process-item {
+      padding: 32px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .process-item h3 {
+      font-size: 1.15rem;
+      margin: 16px 0 8px;
+    }
+
+    /* ===== Testimonials ===== */
+    .testi {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    .testi .item {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .testi .item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .testi img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      margin-bottom: 16px;
+    }
+    .stars {
+      font-size: 1.2rem;
+      color: #f6ad55;
+      margin-bottom: 16px;
+    }
+    .cite {
+      margin-top: 16px;
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-item {
+      background: #fff;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 20px 32px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    .faq-item[open] summary::after {
+      content: '−';
+    }
+    .faq-item p {
+      padding: 0 32px 20px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* ===== Contact ===== */
+    .contact {
+      background: var(--bg-alt);
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    form {
+      max-width: 640px;
+      margin: 0 auto;
+      display: grid;
+      gap: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid #cbd5e0;
+      border-radius: var(--radius);
+      font: inherit;
+      transition: var(--transition);
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--ring);
+    }
+    button {
+      padding: 16px 32px;
+      border: none;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    button:hover {
+      background: var(--primary-800);
+      transform: translateY(-2px);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #1a202c;
+      color: #e2e8f0;
+      padding: 40px 32px;
+    }
+    .footer-wrap {
+      max-width: 1280px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+    .footer-links a {
+      color: #e2e8f0;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 0.95rem;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .footer-wrap {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .footer-links {
+        margin-top: 20px;
+      }
+    }
+
+    /* ===== Responsive Design ===== */
+    @media (max-width: 600px) {
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero-copy h1 {
+        font-size: 2.25rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Navigation ===== -->
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Waqas — Expert Coding Tutor">
+        <div class="brand-logo">W</div>
+        <div>
+          <div class="brand-title">Waqas</div>
+          <small class="brand-sub">Expert Coding Tutor</small>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#teach">What I Teach</a>
+        <a href="#process">How I Teach</a>
+        <a href="#audience">Who I Teach</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-cta" href="https://calendly.com/veekaprogramming/30min" target="_blank" rel="noopener">🎁 Free Trial</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <header id="top" class="hero">
+    <div class="wrap">
+      <div class="hero-copy animate-in" style="--delay: 0">
+        <span class="hero-badge">Over 9,000 Teaching Hours Delivered</span>
+        <h1>Expert Guidance to Master Coding & Ace Interviews</h1>
+        <p>Hi, I’m <strong>Waqas</strong>, a Technical Team Lead with 10+ years of experience. Unlock your potential in <strong>Python, Java, C++, AI, Game Development, and Interview Preparation</strong> with personalized, project-based lessons. Start with a <strong>free 30-minute trial</strong> to build your custom roadmap.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-cta" href="https://calendly.com/veekaprogramming/30min" target="_blank" rel="noopener">Book Free Trial Now</a>
+          <a class="btn btn-ghost" href="#teach">Discover Curriculum</a>
+        </div>
+      </div>
+      <div class="hero-card animate-in" style="--delay: 1">
+        <img src="waqas.jpg" alt="Waqas — Expert Coding Tutor" />
+        <div>
+          <strong>Your Personalized Path</strong>
+          <p style="margin: 0.3rem 0 0; color: var(--muted);">Start with a free 30-minute session to set goals and receive a tailored learning plan with real-world projects and interview strategies.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+   <section id="video-demo" style="float: right; max-width: 400px; margin-top: -150px">
+  <h2>Watch This Introduction</h2>
+  <iframe
+    width="400"
+    height="250"
+    src="https://www.youtube.com/embed/kN1SJofDpCg"
+    title="YouTube video player"
+    frameborder="100"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</section>
+
+  <!-- ===== About ===== -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title animate-in">About Waqas</h2>
+      <p class="section-sub animate-in" style="--delay: 1">As a Technical Team Lead and coding tutor with over a decade of experience, I’ve empowered thousands of students to achieve their coding goals. My hands-on, project-based approach ensures you build real-world skills, whether you’re a beginner, a professional, or preparing for top-tier tech interviews.</p>
+      <div class="grid">
+        <div class="card animate-in" style="--delay: 2">
+          <h3>10+ Years Experience</h3>
+          <p>Leading teams and mentoring coders in industry settings.</p>
+        </div>
+        <div class="card animate-in" style="--delay: 3">
+          <h3>Certified Educator</h3>
+          <p>Trained in teaching methodologies for diverse learners.</p>
+        </div>
+        <div class="card animate-in" style="--delay: 4">
+          <h3>Proven Results</h3>
+          <p>90% of students report significant skill improvement and interview success.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ===== What I Teach ===== -->
+  <section id="teach" style="background: var(--bg-alt); border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+    <div class="container">
+      <h2 class="section-title animate-in">What I Teach</h2>
+      <p class="section-sub animate-in" style="--delay: 1">Master in-demand skills with practical, project-based lessons tailored to your goals, including comprehensive interview preparation.</p>
+      <div class="grid">
+        <div class="card animate-in" style="--delay: 2"><h3>🐍 Python</h3><p>From basics to advanced data science, automation, and web apps.</p></div>
+        <div class="card animate-in" style="--delay: 3"><h3>☕ Java</h3><p>OOP, Spring Boot, and interview-ready applications.</p></div>
+        <div class="card animate-in" style="--delay: 4"><h3>💻 C++</h3><p>High-performance coding, algorithms, and data structures.</p></div>
+        <div class="card animate-in" style="--delay: 5"><h3>#️⃣ C#</h3><p>Unity game development and enterprise applications.</p></div>
+        <div class="card animate-in" style="--delay: 6"><h3>📊 Algorithms</h3><p>Competitive programming and problem-solving mastery.</p></div>
+        <div class="card animate-in" style="--delay: 7"><h3>🤖 ML & AI</h3><p>Build models with TensorFlow and real-world datasets.</p></div>
+        <div class="card animate-in" style="--delay: 8"><h3>📱 App Development</h3><p>Create Android/iOS apps with modern frameworks.</p></div>
+        <div class="card animate-in" style="--delay: 9"><h3>🎮 Game Development</h3><p>Design and publish games with Unity.</p></div>
+        <div class="card animate-in" style="--delay: 10"><h3>🏆 Interview Prep</h3><p>Ace tech interviews with mock sessions, coding challenges, and behavioral strategies for FAANG and beyond.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Teaching Process ===== -->
+  <section id="process">
+    <div class="container">
+      <h2 class="section-title animate-in">How I Teach</h2>
+      <p class="section-sub animate-in" style="--delay: 1">My proven 4-step process ensures you learn effectively and achieve tangible results, including interview readiness.</p>
+      <div class="process-grid">
+        <div class="process-item animate-in" style="--delay: 2">
+          <div style="font-size: 2rem;">📋</div>
+          <h3>Assess Goals</h3>
+          <p>Free trial to understand your needs and set objectives.</p>
+        </div>
+        <div class="process-item animate-in" style="--delay: 3">
+          <div style="font-size: 2rem;">🗺️</div>
+          <h3>Custom Plan</h3>
+          <p>Tailored roadmap with projects that match your goals.</p>
+        </div>
+        <div class="process-item animate-in" style="--delay: 4">
+          <div style="font-size: 2rem;">🛠️</div>
+          <h3>Hands-On Learning</h3>
+          <p>Build real-world projects with guided support.</p>
+        </div>
+        <div class="process-item animate-in" style="--delay: 5">
+          <div style="font-size: 2rem;">📈</div>
+          <h3>Track Progress</h3>
+          <p>Regular feedback and code reviews to ensure success.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Who I Teach ===== -->
+  <section id="audience">
+    <div class="container">
+      <h2 class="section-title animate-in">Who I Teach</h2>
+      <p class="section-sub animate-in" style="--delay: 1">From beginners to professionals, I tailor lessons to your unique needs, including those preparing for job interviews.</p>
+      <div class="grid">
+        <div class="card animate-in" style="--delay: 2"><h3>🌱 Beginners</h3><p>Start coding with confidence and a clear path.</p></div>
+        <div class="card animate-in" style="--delay: 3"><h3>👦 Kids & Teens (9+)</h3><p>Fun, engaging lessons that spark creativity.</p></div>
+        <div class="card animate-in" style="--delay: 4"><h3>💼 Professionals</h3><p>Upskill for career growth or ace interviews.</p></div>
+        <div class="card animate-in" style="--delay: 5"><h3>🧩 Neurodiverse Learners</h3><p>Supportive, adaptive teaching for all minds.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Testimonials ===== -->
+  <section id="testimonials" style="background: var(--bg-alt); border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+    <div class="container">
+      <h2 class="section-title animate-in">Student Success Stories</h2>
+      <p class="section-sub animate-in" style="--delay: 1">Hear from students who transformed their skills with my tutoring.</p>
+      <div class="testi">
+        <div class="item animate-in" style="--delay: 2">
+
+          <div class="stars">★★★★★</div>
+          <p>“Waqas guided me to land a software engineering role at a top tech company through targeted interview prep.”</p>
+          <div class="cite">— Alex, Software Engineer</div>
+        </div>
+        <div class="item animate-in" style="--delay: 3">
+
+          <div class="stars">★★★★★</div>
+          <p>“My daughter went from zero to building her own Python game in months!”</p>
+          <div class="cite">— Sarah, Parent</div>
+        </div>
+        <div class="item animate-in" style="--delay: 4">
+
+          <div class="stars">★★★★★</div>
+          <p>“Waqas’s patience and clear explanations made algorithms click for me.”</p>
+          <div class="cite">— John, Computer Science Student</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title animate-in">Frequently Asked Questions</h2>
+      <p class="section-sub animate-in" style="--delay: 1">Answers to common questions about my tutoring services.</p>
+      <div class="faq-list">
+        <details class="faq-item animate-in" style="--delay: 2">
+          <summary>What does the free trial include?</summary>
+          <p>The 30-minute trial includes a goal-setting session, skill assessment, and a personalized learning plan tailored to your needs.</p>
+        </details>
+        <details class="faq-item animate-in" style="--delay: 3">
+          <summary>Do you offer group classes?</summary>
+          <p>Yes, I do offer group classes.</p>
+        </details>
+        <details class="faq-item animate-in" style="--delay: 4">
+          <summary>How are lessons structured?</summary>
+          <p>Lessons combine theory, hands-on coding, and real-world projects, with regular feedback and take-home exercises.</p>
+        </details>
+        <details class="faq-item animate-in" style="--delay: 5">
+          <summary>What is your pricing?</summary>
+          <p>Pricing varies based on session packages. Book a free trial to discuss options tailored to your goals.</p>
+        </details>
+        <details class="faq-item animate-in" style="--delay: 6">
+          <summary>How do you prepare students for interviews?</summary>
+          <p>I offer mock interviews, coding challenge practice using leetcode, system design sessions, and behavioral coaching to build confidence and skills for tech interviews.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title animate-in">Get Started Today</h2>
+      <p class="section-sub animate-in" style="--delay: 1">Ready to master coding and prepare for interviews? Book your <strong>free 30-minute trial</strong> or send a message to discuss your goals.</p>
+      <div style="text-align: center; margin-bottom: 32px;">
+        <a class="btn btn-cta" href="https://calendly.com/veekaprogramming/30min" target="_blank" rel="noopener">Book Free Trial</a>
+      </div>
+      <form action="https://formspree.io/f/mwpqajkp" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name" />
+        <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email" />
+        <textarea name="message" placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-note">© 2025 Waqas — Expert Coding Tutor. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#teach">Curriculum</a>
+        <a href="#contact">Contact</a>
+        <a href="https://calendly.com/veekaprogramming/30min" target="_blank" rel="noopener">Free Trial</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling and active nav highlighting
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if (this.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Active section highlighting
+    const sections = document.querySelectorAll('section, header');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 60) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Scroll-triggered animations
+    const animateElements = document.querySelectorAll('.animate-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.2 });
+    animateElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
